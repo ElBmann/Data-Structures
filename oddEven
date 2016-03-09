@@ -1,0 +1,105 @@
+//Brian Recuero Version3
+import java.util.Scanner;
+public class oddEvenV3 {
+
+		public static void main(String [] args)
+		{
+			Scanner stdin = new Scanner(System.in);//for user input
+			int[] evenNum = new int [100];//Even Array up too 100
+			int[] oddNum = new int[100];//Odd Array up too 100
+			int evenIndex=0;//even numbers
+			int oddIndex=0;//odd numbers
+			int input=0;//user input
+			int i=0;
+			int k=0; 
+			int j=0;
+			int b=0;
+			String name;
+			
+			System.out.println("Type In Your Name");//Type in name 
+				name = stdin.nextLine();
+			
+			while ((i < oddNum.length && i < evenNum.length) && input != -1)//Makes sure no more than 100 numbers can be placed.
+			{
+				try//this is what we want anything else the catch will block it and display a message
+				{
+					
+					System.out.println(name+" Enter a positive number, Enter -1 For results");
+					input = stdin.nextInt();
+					if ( input < 0 ) //if negative 
+					{
+					  System.out.println("Only Positive Numbers Please: \n");
+					  continue;
+					}
+					oddNum[i]=input;//holds input by user
+				    i++;//Increments array
+				 }  
+				
+					catch(Exception d)
+				     {//makes sure their is no string input by user
+						System.out.println("no Letters Please: \n");
+				        stdin.next();
+				        
+			           }
+				    }
+			      	
+			      System.out.println(name+" This is what you have typed in: ");
+				    for(k=0;k<i;k++)
+				    {
+					  System.out.println(oddNum[k]);//prints out what you typed in
+				    }
+			   
+				
+			
+				System.out.println("\n");
+				System.out.println("Here are the even numbers: ");
+				   for(j=0; j<i;j++)
+				   {
+					  if (oddNum[j]%2 == 0)//if odd num equals zero separate the evens
+				   {
+					   evenNum[evenIndex]=oddNum[j];//sorts the even numbers
+					   evenIndex++;
+				
+					}
+				}
+
+				   if(evenIndex !=0)
+				   {
+				     for(j=0;j<evenIndex;j++)
+				   {
+					  if(evenNum[j]>=0)//you want 0 to be an even number so this does that
+					  {
+						System.out.println(evenNum[j]);//print out even numbers
+					  }
+				   }
+				
+			      }
+				   System.out.println("\n");
+				   System.out.println("Here are the odd numbers: ");
+				     for(b=0;b<i;b++)
+				    {
+				     	if(oddNum[b]%2!=0 )//if odd
+					    {
+						
+						oddNum[oddIndex]=oddNum[b];//sorts odd numbers
+						oddIndex++;//cycle through the numbers
+						
+					   }
+				   }
+				      if(oddIndex!=0)//if odd index is not equal to 0
+				      {
+					    for(b=0;b<oddIndex;b++)//cycle through odd num
+					  {
+						 if(oddNum[b]>0)
+						 {
+							System.out.println(oddNum[b]);//print out odd numbers
+						 }
+					}
+				}
+		 }
+					
+	 }
+		
+
+
+
