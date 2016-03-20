@@ -1,8 +1,9 @@
-package dataStructures;
+
 
 /**
  * Created by Brecuero on 3/19/2016.
  */
+package dataStructures;
 public class Item
 {
     private String item;
