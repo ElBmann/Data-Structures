@@ -12,26 +12,31 @@ public class MyDequeApp {
             //MyDeque D1= new MyDeque();//........fixBug
             //System.out.println(D1.toString());
             MyDeque theDeQueue = new MyDeque(5); //........................................queue holds 5 items
-            int choose=0;
-            int choose2=0;
-
-            while(choose!=8) {
+            int choice=0;
+            int choice2=0;
+            String choice3 = null;
+            while(choice!=8) {
 
                 System.out.println("Please Enter: \n" + " 1: For insert Front \n 2: For insert rear \n 3: For remove Front \n 4: For Remove Rear  " +
                         "\n 5: For Peek Front \n 6: For Peek rear \n 7: For Display queue \n 8: For Quit  ");
-                choose = input.nextInt();
+                choice = input.nextInt();
 
 
-                switch (choose) {
+                switch (choice) {
                     case 1:
-                        System.out.println("Enter a number to insert: ");
-                        choose2 = input.nextInt();
-                        theDeQueue.insertFront(choose2); // insert 4 items
+                        //System.out.println("Enter an Item: ");
+                        //choice3 = input.nextLine();
+                        System.out.println("Enter The Price: ");
+                        choice2= input.nextInt();
+                        theDeQueue.insertRear(choice2);
                         break;
                     case 2:
-                        System.out.println("Enter a number to insert: ");
-                        choose2 = input.nextInt();
-                        theDeQueue.insertRear(choose2); // insert 4 items
+                        System.out.println("Enter an Item: ");
+                        choice2 = input.nextInt();
+                        System.out.println("Enter The Price: ");
+                        choice3= input.nextLine();
+                        theDeQueue.insertRear(choice2);
+                        theDeQueue.insertRear(choice3);// insert 4 items
                         break;
                     case 3:
                         theDeQueue.removeFront(); // remove 3 items
@@ -47,8 +52,13 @@ public class MyDequeApp {
                         theDeQueue.peekRear();
                         break;
                     case 7:
-                        MyDequeApp D1= new MyDequeApp();
-                        System.out.println(D1.toString());
+                        while( !theDeQueue.isEmpty() )    // remove and display
+                        {                            //    all items
+                            long n = theDeQueue.removeFront();
+                            System.out.print(n);
+                            System.out.print(" ");
+                        }
+                        System.out.println("");
                        // System.out.print(“ “);
                         break;
                     case 8:
@@ -57,7 +67,7 @@ public class MyDequeApp {
                         System.out.println("You Didn't Enter any of the Options");
                 }
             }
-            while( !theDeQueue.isEmpty() ) // remove and display
+           /* while( !theDeQueue.isEmpty() ) // remove and display
             { // all items
                 Item n = theDeQueue.removeFront(); // (40, 50, 60, 70, 80)
 
@@ -66,6 +76,10 @@ public class MyDequeApp {
             }
 
             System.out.println("");
+            */
 
         }
     }
+
+
+
