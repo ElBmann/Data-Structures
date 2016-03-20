@@ -1,61 +1,61 @@
 package dataStructures;
-
 /**
  * Created by Brecuero on 3/19/2016.
  */
 public class MyDeque {
     private int maxSize;
-    private long[] dequeArray;
+    private Item[] dequeArray;
     private int front;
     private int rear;
-    private int nItems;
+    private int nItems=0;
     //private String itemNum;
 
     public MyDeque(int s)
     {//..........................................................constructor
 
-        maxSize = s+1; //............................................array is 1 cell larger
-        dequeArray = new long[maxSize]; //...........................than requested
+        maxSize = s+1; //.........................................array is 1 cell larger
+        dequeArray = new Item[maxSize]; //........................than requested
         front = 0;
         rear = -1;
         nItems=0;
     }
-    public void insertFront(long f) //............................put item at front of queue
+    public void insertFront(Item f) //............................put item at front of queue
     {
-        if(front == maxSize)//........................................Front of queue
-            front = 0;//..................................................set front
-        dequeArray[++front] = f;//....................................increment front and insert
+        if(front == maxSize)//....................................Front of queue
+            front = 0;//..........................................set front
+        dequeArray[++front] = f;//................................increment front and insert
     }
-    public void insertRear(long r) //.............................put item at rear of queue
+    public void insertRear(Item r) //.............................put item at rear of queue
     {
-        if(rear == maxSize-1)//.......................................rear is set to rear of queue!
+        if(rear == maxSize-1)//...................................rear is set to rear of queue!
 
-            rear = -1;//..................................................initialize the rear
+            rear = -1;//..........................................initialize the rear
 
-        dequeArray[++rear] = r;//.....................................increment and insert
+        dequeArray[++rear] = r;//.................................increment and insert
     }
 
-    public long removeFront() //..................................take item from front of queue
+    public Item removeFront() //..................................take item from front of queue
     {
-        long temp=dequeArray[front++];//..........................Get Value and increment
+        Item temp=dequeArray[front++];//..........................Get Value and increment
         if(front == maxSize)//....................................deal w/Wrap Around
             front=0;//............................................setting the Front
-        nItems--;//...........................................One Less Item
+        nItems--;//...............................................One Less Item
         return temp;
 
     }
     //take item from rear of queue
-    public long removeRear()
+    public Item removeRear()
     {
-        long temp=dequeArray[rear++];//...............................take item from rear of queue
-        if(rear==maxSize-1)//.........................................Deal with wrap around
+
+        if(rear==maxSize-1)//......................................Deal with wrap around
             rear=-1;
+        Item temp=dequeArray[rear++];//............................take item from rear of queue
         nItems--;
         return temp;
 
     }
     //peek at Front
-    public long peekFront()
+    public Item peekFront()
     {
         if(front== maxSize)//.....................................Deal with wrap around
             front=0;
@@ -63,7 +63,7 @@ public class MyDeque {
 
     }
     //peek at Rear
-    public long peekRear()
+    public Item peekRear()
     {
         if(rear== maxSize-1)//.....................................Deal with wrap around
             rear=-1;
@@ -74,6 +74,7 @@ public class MyDeque {
     // true if queue is empty
     public boolean isEmpty()
     {
+
         return ( rear+1==front || (front+maxSize-1==rear) );
     }
     // true if queue is full
@@ -84,7 +85,13 @@ public class MyDeque {
     }
     //Displays the data stored in the deque
     //in the sequence from ‘front’ to ‘rear’
+@Override
     public String toString() {
-        return "Front: " + dequeArray[front] + "\nRear: " + dequeArray[rear];
+          String s = null;
+        for(int i =front;i<rear;i++)
+        {
+         s+=dequeArray[i].getItem() + "\n" + dequeArray[i].getItemPrice();//Go to Item Class To Fix
+        }
+    return s;
     }
 }
