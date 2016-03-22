@@ -9,18 +9,17 @@ public class MyDequeApp
 
         public static void main(String[] args)
         {
-            Scanner input = new Scanner(System.in);//..............................................Reading from System.in
-
-
+            Scanner input = new Scanner(System.in);//....................................................Allows user to input
             int choice=0;
             int change;
-            System.out.println("Dequeue Manipulation Menu Please Type 1 To Continue. \n");
-            change = input.nextInt();
+            System.out.println("Dequeue Manipulation Enter Size of Deque \n");
+            change = input.nextInt();//.................................................................Allows user to change the size of the Dequeue
+            MyDeque theDeQueue = new MyDeque(change);//.................................................Queue holds 5 items
             while(choice!=8)
             {
 
-                MyDeque theDeQueue = new MyDeque(change);//.................................................Queue holds 5 items
-                System.out.println("Please Enter: \n" + " 1: For insert Front \n 2: For insert rear \n 3: For remove Front \n 4: For Remove Rear  " +
+
+                System.out.println("Please Select a number in the menu: \n" + " 1: For insert Front \n 2: For insert rear \n 3: For remove Front \n 4: For Remove Rear  " +
                         "\n 5: For Peek Front \n 6: For Peek rear \n 7: For Display queue \n 8: For Quit  ");
                          choice = input.nextInt();//................................................User Options
 
@@ -29,11 +28,11 @@ public class MyDequeApp
                     case 1:
 
                         try//........................................................................This is what we want anything else the catch will block it and display a message
-                        {
+                         {
                             String sku;//............................................................Variable for Item Number
                             double Price;//..........................................................Variable for Price
                                if(theDeQueue.isFull())
-                                   throw new RuntimeException("It is full");
+                                   System.out.println("Is Full");
                             else
 
                                    System.out.println("Please enter the item number you wish to insert."); // prompt for the item number
@@ -46,21 +45,21 @@ public class MyDequeApp
                             Item newItem = new Item(); // create an item with the given number and price
 
                             theDeQueue.insertFront(newItem); // insert the item
-                        }
-                            catch(Exception d)
-                            {//makes sure their is no string input by user
-                                System.out.println("no Letters Please: \n");
+                         }
+                           catch(Exception d)
+                              {//...................................................................makes sure their is no string input by user
+                                 System.out.println("no Letters Please: \n");
                                 input.next();
 
                             }
                         break;
                     case 2:
-                        try//........................................................................This is what we want anything else the catch will block it and display a message
-                        {
-                            String sku;//............................................................Variable for Item Number
-                            double Price;//..........................................................Variable for Price
+                       try//........................................................................This is what we want anything else the catch will block it and display a message
+                       {
+                       String sku;//............................................................Variable for Item Number
+                       double Price;//..........................................................Variable for Price
                             if(theDeQueue.isFull())
-                                throw new RuntimeException("It is full");
+                                System.out.println("Is Full");
                             else
 
                                 System.out.println("Please enter the item number you wish to insert."); // prompt for the item number
@@ -70,10 +69,10 @@ public class MyDequeApp
                             System.out.println("Please enter the item price."); // prompt for the item price
                             Price= input.nextDouble();
 
-                            Item newItem = new Item(); // create an item with the given number and price
+                            Item newItem2 = new Item(); // create an item with the given number and price
 
-                            theDeQueue.insertRear(newItem); // insert the item
-                        }
+                            theDeQueue.insertRear(newItem2); // insert the item
+                          }
                         catch(Exception d)
                         {//makes sure their is no string input by user
                             System.out.println("no Letters Please: \n");
@@ -82,27 +81,38 @@ public class MyDequeApp
                         }
                         break;
                     case 3:
-                        theDeQueue.removeFront();//......................................................Remove 3 items
+                        if(theDeQueue.isEmpty()) // if the deque is empty, cannot remove
+                            System.out.println("Sorry, the deque is empty. Cannot remove.");
+
+                        else
+                            System.out.println("You removed: " + theDeQueue.removeFront().getSku());
 
                         break;
                     case 4:
-                        theDeQueue.removeRear();
+                        if(theDeQueue.isEmpty()) // if the deque is empty, cannot remove
+                            System.out.println("Sorry, the deque is empty. Cannot remove.");
+                        else
+                            System.out.println("You removed: " + theDeQueue.removeRear().getSku());
+
                         break;
                     case 5:
-                        theDeQueue.peekFront();
+                        if(theDeQueue.isEmpty()) // if the deque is empty, cannot peek
+                            System.out.println("The deque is empty. There is nothing to peek.");
+                        else
+                            System.out.println("The front is: " + theDeQueue.peekFront().getSku() + "@ $" + theDeQueue.peekFront().getItemPrice());
+
                         break;
                     case 6:
-                        theDeQueue.peekRear();
+                        if(theDeQueue.isEmpty()) // if the deque is empty, cannot peek
+                            System.out.println("The deque is empty. There is nothing to peek.");
+                        else
+                            System.out.println("The rear is: " + theDeQueue.peekRear().getSku() + "@ $" + theDeQueue.peekRear().getItemPrice());
+
                         break;
                     case 7:
-                        while( !theDeQueue.isEmpty() )//.........................................Remove and display
-                        {//......................................................................All items
-                            Item n = theDeQueue.removeRear();
-                            System.out.print(n);
-                            System.out.print(" ");
-                        }
-                        System.out.println("");
-                       // System.out.print(“ “);
+                        System.out.println("The state is: " + theDeQueue.toString());
+
+
                         break;
                     case 8:
                         break;
