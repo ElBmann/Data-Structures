@@ -5,29 +5,30 @@ package dataStructures;
  */
 public class myStack {
     private int maxSize;
-    private char[] stackArray;
+    private Item[] stackArray;
     private int top;
-
+    MyDeque deque;
     public myStack(int max) //...................................constructor
     {
         maxSize = max;
-        stackArray = new char[maxSize];
+        stackArray = new Item[maxSize];
         top = -1;
     }
-    public void push(char j) //...................................put item on top of stack
+    public void push(String sku, double itemPrice) //......................put item on top of stack
     {
-        theDeQueue.insertFront(choice2);
-        stackArray[++top] = j;
+
+        stackArray[++top] = new Item(sku,itemPrice);
     }
 
-    public char pop() //..........................................take item from top of stack
+    public Item pop() //..........................................take item from top of stack
     {
 
         return stackArray[top--];
     }
 
-    public char peek() //.........................................peek at top of stack
+    public Item peek() //.........................................peek at top of stack
     {
+
         return stackArray[top];
    }
 
@@ -37,7 +38,7 @@ public class myStack {
     }
     public boolean isFull() //....................................true if stack is empty
     {
-        return (top == maxSize);
+        return (top == maxSize-1);
     }
 
-} // end class StackX
+} // end class Stack
