@@ -6,34 +6,38 @@
 package dataStructures;
 public class Item
 {
-    private String item;
-    private double itemPrice;
-    public Item()
+    String sku;
+    double itemPrice;
+    public Item(String newSku, double newItemPrice)
     {
-        item= "Computer";
-        itemPrice=1500.00;
-    }
-    Item(String newItem, double newItemPrice)
-    {
-        item=newItem;
-        itemPrice=newItemPrice;
-    }
-    public String getItem()
-    {
-    return item;
-    }
-     public void setItem(String newItem)
-    {
-        item = newItem;
+           sku = newSku;
+           itemPrice = newItemPrice;
     }
 
-    public double getItemPrice() {
+    public String getSku()
+    {
+    return sku;
+    }
+     public void setSku(String newSku)
+    {
+        sku = newSku;
+    }
+
+    public double getItemPrice()
+    {
         return itemPrice;
     }
 
     public void setItemPrice(double newItemPrice)
     {
-        itemPrice=newItemPrice;
+        itemPrice = newItemPrice;
     }
+@Override
+    public String toString()
+{
+return"Sku Product Number: "+ sku+"Item Price: "+itemPrice;
 }
+
+    }
+
 
