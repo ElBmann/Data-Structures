@@ -1,24 +1,24 @@
-
-
-/**
- * Created by Brecuero on 3/19/2016.
- */
 package dataStructures;
 public class Item
 {
     String sku;
     double itemPrice;
-    public Item(String newSku, double newItemPrice)
+    public Item()
     {
-           sku = newSku;
-           itemPrice = newItemPrice;
+        sku = "10.00";
+        itemPrice = 100.00;
+    }
+    Item(String newSku, double newItemPrice)
+    {
+        sku = newSku;
+        itemPrice = newItemPrice;
     }
 
     public String getSku()
     {
-    return sku;
+        return sku;
     }
-     public void setSku(String newSku)
+    public void setSku(String newSku)
     {
         sku = newSku;
     }
@@ -38,6 +38,4 @@ public class Item
 return"Sku Product Number: "+ sku+"Item Price: "+itemPrice;
 }
 
-    }
-
-
+}
