@@ -1,8 +1,8 @@
-package dataStructures;
+
 /**
  * Created by Brecuero on 3/19/2016.
  */
-
+package dataStructures;
 public class MyDeque {
     private int maxSize;
     private Item[] dequeArray;
@@ -10,7 +10,7 @@ public class MyDeque {
     private int rear;
     private int nItems=0;
 
-// true if queue is empty
+    // true if queue is empty
     public boolean isEmpty()
     {
 
@@ -31,38 +31,39 @@ public class MyDeque {
         rear = -1;
         nItems=0;
     }
-    public void insertFront(String newSku, double newItemPrice)//.............................put item at front of queue
+    public void insertFront(Item f)//.............................put item at front of queue
     {
         if (isFull())
-          throw new RuntimeException("It is full");
+            System.out.println("It is full");
 
-        if(front == maxSize-1)//...................................Front of queue
+        if(front == maxSize)//...................................Front of queue
             front = 0;//...........................................set front
-        dequeArray[++front] = new Item(newSku, newItemPrice);//...............................increment front and insert
-          nItems++;
+        front++;
+        dequeArray[--front] = f;//...............................increment front and insert
+        nItems++;
 
     }
 
-    public void insertRear(String newSku, double newItemPrice)//...............................put item at rear of queue
+    public void insertRear(Item r)//...............................put item at rear of queue
     {
         if (isFull())
-            throw new RuntimeException("It is full");
+            System.out.println("Nothing Here It's Empty");
 
         if(rear == maxSize-1)//...................................rear is set to rear of queue!
             rear = -1;//..........................................initialize the rear
-           dequeArray[++rear] = new Item(newSku, newItemPrice);;//..............................increment and insert
-           nItems++;
+        dequeArray[++rear] = r;//..............................increment and insert
+        nItems++;
     }
 
     public Item removeFront() //................................................................take item from front of queue
     {
         if (isEmpty())
-            throw new RuntimeException("It is empty");//......FixIT
+            System.out.println("Nothing Here It's Empty");
 
         Item temp=dequeArray[front++];//........................................................Get Value and increment
         if(front == maxSize)//..................................................................deal w/Wrap Around
             front=0;//..........................................................................setting the Front
-            nItems--;//.........................................................................One Less Item
+        nItems--;//.........................................................................One Less Item
         return temp;
 
     }
@@ -70,7 +71,7 @@ public class MyDeque {
     public Item removeRear()
     {
         if (isEmpty())
-            throw new RuntimeException("It is empty");//..................Fix IT
+            System.out.println("Nothing Here It's Empty");
 
         Item temp=dequeArray[rear++];//.........................................................take item from rear of queue
         if(rear==maxSize)//.....................................................................Deal with wrap around
@@ -97,30 +98,31 @@ public class MyDeque {
 
     //Displays the data stored in the deque
     //in the sequence from ‘front’ to ‘rear’
-@Override
+    @Override
     public String toString()
-{
-          String frontRear = "";
-         if(isEmpty())
-             frontRear+="";
+    {
+        String frontRear = "";
+        if(isEmpty())
+            frontRear+="";
         else if(front < rear)
-         {
-             for (int i = front; i < rear ; i++)
-                 frontRear += dequeArray[i] + "\n";
-         }
+        {
+            for (int i = front; i < rear ; i++)
+                frontRear += dequeArray[i] + "\n";
+        }
         else if(front > rear)
-         {
-             for (int i = front; i < maxSize; i++)
-                 frontRear += dequeArray[i] + "\n";
+        {
+            for (int i = front; i < maxSize; i++)
+                frontRear += dequeArray[i] + "\n";
 
-             for (int j = 0; j < rear + 1; j++)
-                 frontRear += dequeArray[j] + "\n";
-         }
-         else if(front == rear)
-         {
-             frontRear += dequeArray[front] + "\n";
-         }
+            for (int j = 0; j < rear + 1; j++)
+                frontRear += dequeArray[j] + "\n";
+        }
+        else if(front == rear)
+        {
+            frontRear += dequeArray[front] + "\n";
+        }
 
-    return frontRear;
+        return frontRear;
     }
 }
+
