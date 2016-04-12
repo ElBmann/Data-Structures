@@ -1,44 +1,57 @@
-package dataStructures;
+
 
 /**
- * Created by Brecuero on 3/20/2016.
+ * Brian Recuero Written in Java this calls to the
+ * Main class so it can use its methods For the stack.
+ * this stack is a FILO (first in last out) Principle.
+ * It has a pop and a push and like the deque it has a
+ * peek and both boolean expressions for if its empty or full.
  */
-public class myStack {
+package dataStructures;
+public class MyStack
+{
     private int maxSize;
-    private Item[] stackArray;
-    private int top;
-    MyDeque deque;
-    public myStack(int max) //...................................constructor
+    private MyDeque stackArray;
+    //private int top;
+   //MyDeque deque;
+    public MyStack(int max) //...................................constructor
     {
         maxSize = max;
-        stackArray = new Item[maxSize];
-        top = -1;
+        stackArray = new MyDeque(maxSize);
+
     }
-    public void push(String sku, double itemPrice) //......................put item on top of stack
+    public void push(Item f) //......................put item on top of stack
     {
 
-        stackArray[++top] = new Item(sku,itemPrice);
+
+        stackArray.insertFront(f);
     }
 
     public Item pop() //..........................................take item from top of stack
     {
 
-        return stackArray[top--];
+       return stackArray.removeFront();
     }
 
     public Item peek() //.........................................peek at top of stack
     {
 
-        return stackArray[top];
-   }
+        return stackArray.peekFront();
+    }
 
     public boolean isEmpty() //...................................true if stack is empty
     {
-        return (top == -1);
+        return stackArray.isEmpty();
     }
     public boolean isFull() //....................................true if stack is empty
     {
-        return (top == maxSize-1);
+        return stackArray.isFull();
     }
 
-} // end class Stack
+    @Override
+    public String toString()//..............................................To String
+    {
+        return stackArray.toString();
+    }
+
+} // End class Stack
