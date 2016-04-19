@@ -1,0 +1,15 @@
+public void insertionSort ()
+{
+		Link current = first;
+		
+		while (current != null) {
+			String temp = current.student.getId();
+			Link jCurrent = current.prev;
+			
+			while (jCurrent != first && Integer.getInteger(jCurrent.student.getId()) > Integer.getInteger(temp)) { //I can reconfigure the comparison method should you not want us to invoke the Integer class for methods.
+				jCurrent.next = jCurrent;
+				jCurrent = jCurrent.prev;
+			}
+			current = current.next;
+		}
+	}
