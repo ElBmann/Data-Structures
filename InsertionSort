@@ -6,7 +6,8 @@ public void insertionSort ()
 			String temp = current.student.getId();
 			Link jCurrent = current.prev;
 			
-			while (jCurrent != first && Integer.getInteger(jCurrent.student.getId()) > Integer.getInteger(temp)) { //I can reconfigure the comparison method should you not want us to invoke the Integer class for methods.
+			while (jCurrent != first && Integer.getInteger(jCurrent.student.getId()) > Integer.getInteger(temp)) 
+			{ 
 				jCurrent.next = jCurrent;
 				jCurrent = jCurrent.prev;
 			}
