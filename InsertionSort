@@ -1,16 +1,52 @@
-public void insertionSort ()
-{
-		Link current = first;
-		
-		while (current != null) {
-			String temp = current.student.getId();
-			Link jCurrent = current.prev;
-			
-			while (jCurrent != first && Integer.getInteger(jCurrent.student.getId()) > Integer.getInteger(temp)) 
-			{ 
-				jCurrent.next = jCurrent;
-				jCurrent = jCurrent.prev;
-			}
-			current = current.next;
-		}
-	}
+public void insertionSort() {
+        Link Current = first.next;
+        Link Current2 = Current.prev;
+        while (Current != null) {
+            Current2 = Current.prev;
+            while (Current2 != null)
+            {
+                int info = Integer.valueOf(Current2.data.getId());
+                int info2 = Integer.valueOf(Current2.next.data.getId());
+                if (info2 < info) {
+                    int idFront = Integer.valueOf(first.data.getId()); //figure this part out
+                    int idBack = Integer.valueOf(last.data.getId());
+                    int idPrev = Integer.valueOf(Current2.data.getId());
+                    int idNext = Integer.valueOf(Current2.next.data.getId());
+                    if (last == Current.next && first == Current2) {
+                        deleteFirst();
+                        insertAfter(first.data.getId(), holdsValue.data);
+                    }
+                    else
+                    {
+
+
+                        if (idFront == idPrev) {
+                            deleteFirst();
+                            insertAfter(first.data.getId(), holdsValue.data);
+
+                        }
+                        if (idFront != idPrev && idBack != idNext) {
+
+
+                            Current2.next = Current2.next.next;
+                            Current2.prev.next = Current2.next;
+                            Current2.next.next.prev = Current2;
+                            Current2.next.prev = Current2.prev;
+                            Current2.prev = Current2.next;
+                            Current2.next.next = Current2;
+
+                        }
+                        if (idBack == idNext) {
+                            deleteLast();
+                            insertBefore(last.data.getId(), holdsValue.data);
+
+                        }
+                    }
+                    }
+
+            Current2 = Current2.prev;
+        }
+        Current = Current.next;
+    }
+
+}
