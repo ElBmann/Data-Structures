@@ -31,7 +31,8 @@ public class HashTable {
                     sum += Integer.valueOf(beforeSum);//turn string into number and adds the sum
                     numOfFolds = 0;// resets
                     beforeSum = "";// resets
-                } catch (Exception E) {
+                }
+                catch (Exception E) {
                 }
             }
         }
@@ -53,7 +54,7 @@ public class HashTable {
         while (hashArray[indexNum] != null)//while there are available spaces
         {
             try {
-                if (hashArray[indexNum].getKey().compareTo("-1")==0)//looks for deleted num
+                if (hashArray[indexNum].getKey().compareTo("-1")==0 )//looks for deleted num
                 {
                     break;
                 }
@@ -64,7 +65,6 @@ public class HashTable {
                 indexNum = -1;
             }
             indexNum++;
-
 
         }
         hashArray[indexNum] = new DataItem(data.getKey());
@@ -109,9 +109,10 @@ public class HashTable {
         return arraySize;
     }
 
-    public int getHashArray(int index) {
+    public String getHashArray(int index)
+    {
         String number = hashArray[index].getKey();
-        int numberInt = Integer.valueOf(number);
+        String numberInt =number;
         return numberInt;
     }
 
