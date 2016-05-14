@@ -6,7 +6,7 @@ public class HashTable {
 
     public HashTable(int size) // constructor
     {
-        arraySize = size;
+        arraySize = getPrime(size*2);
         hashArray = new DataItem[arraySize];
         nonItem = new DataItem("-1"); // deleted item key is -1
 
@@ -22,7 +22,7 @@ public class HashTable {
         String beforeSum = "";//the colletion of numbers before the sum and in one fold
 
 
-        for (int i = 0; i < userWordHash.length(); i++)//travereses through the array
+        for (int i = 0; i < userWordHash.length(); i++)//traverses through the array
         {
             numOfFolds++;
             beforeSum += userWordHash.substring(i);
@@ -36,7 +36,7 @@ public class HashTable {
             }
         }
         try {
-            if (beforeSum != "")//this if statment accounts if the numbers arent split evenly
+            if (beforeSum != "")//this if statement accounts if the numbers arent split evenly
             {
                 sum += Integer.valueOf(beforeSum);
             }
@@ -45,7 +45,7 @@ public class HashTable {
         return sum % arraySize; //Returns the Index number!
     }
 
-// -------------------------------------------------------------
+    // -------------------------------------------------------------
 
     public void insert(DataItem data) // insert a DataItem
     {
@@ -57,15 +57,17 @@ public class HashTable {
                 {
                     break;
                 }
-                if (indexNum == hashArray.length - 1)// Accounts to WrapRound
-                {
-                    indexNum = -1;
-                }
-                indexNum++;
-            } catch (Exception E) {}
+            }
+            catch (Exception E) {}
+            if (indexNum == hashArray.length - 1)// Accounts to WrapRound
+            {
+                indexNum = -1;
+            }
+            indexNum++;
+
 
         }
-        hashArray[indexNum] = data;
+        hashArray[indexNum] = new DataItem(data.getKey());
     } // end insert()
 
     //------------------------------------------------------------------
@@ -92,7 +94,7 @@ public class HashTable {
             while (hashArray[hashVal] != null) // until empty cell,
             {                                 // found the key?
                 if (hashArray[hashVal].getKey() == key + "")
-                    return hashArray[hashVal]; // yes, return item
+                    return hashArray[hashVal]; //return item
                 ++hashVal; // go to next cell
                 hashVal %= arraySize; // wraparound if necessary
             }
@@ -107,8 +109,17 @@ public class HashTable {
         return arraySize;
     }
 
-    public DataItem getHashArray(int index) {
-        return hashArray[index];
+    public int getHashArray(int index) {
+        String number = hashArray[index].getKey();
+        int numberInt = Integer.valueOf(number);
+        return numberInt;
+    }
+
+    public boolean isItNull(int index){
+        if(hashArray[index] == null){
+            return true;
+        }
+        else{return false;}
     }
 
     private int getPrime(int min) {
