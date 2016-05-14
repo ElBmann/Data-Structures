@@ -26,15 +26,23 @@ public class HashTableApp {
                     //theHashing.stringHashFunction(hashWord);
                     theHashing.insert(new DataItem(hashWord));
                     System.out.println("Lets See if this shit Works: "+theHashing.hashArray[Integer.valueOf(theHashing.stringHashFunction(hashWord))]);
+                    System.out.println("\n Where the fuck is this String going?: \n"+ hashWord);
+
                     break;
                 case 2:
                     System.out.print("Type in word your searching for");
                     int key = input.nextInt();
-                    theHashing.find(key);
-                    if(theHashing.find(key)==theHashing.insert(key))
-                    {
-                        
+
+                    if(!theHashing.isEmpty(key)) {
+
+                        theHashing.find(key);
                     }
+                    else
+                    System.out.println("Nothing To Search");
+                    //if(theHashing.find(key)==theHashing.insert(key))
+                    //{
+
+                    //}
 
                     break;
                 case 3:
@@ -77,7 +85,7 @@ public class HashTableApp {
         System.out.print("Table:");
         for(int j=0; j<theHashing.getArraySize(); j++)
         {
-            if(!theHashing.isItNull(j) && theHashing.getHashArray(j) != -1)
+            if(!theHashing.isItNull(j) && theHashing.getHashArray(j).compareTo("-1")==0)
             {
                 System.out.print(theHashing.getHashArray(j) + " ");
             }
