@@ -31,6 +31,10 @@ public class HashTableApp {
                     System.out.print("Type in word your searching for");
                     int key = input.nextInt();
                     theHashing.find(key);
+                    if(theHashing.find(key)==theHashing.insert(key))
+                    {
+                        
+                    }
 
                     break;
                 case 3:
@@ -42,27 +46,24 @@ public class HashTableApp {
                     displayTable(theHashing);
 
                     break;
-               /* case 5:
+    /* case 5:
                     if(theDeQueue.isEmpty())//.........................................................................If the deque is empty, cannot peek
                         System.out.println("The deque is empty. There is nothing to peek.");
                     else
                         System.out.println("The Item Sku is: " + theDeQueue.peekFront().getSku() + "\nThe Price is: $" + theDeQueue.peekFront().getItemPrice());
-
                     break;
                 case 6:
                     if(theDeQueue.isEmpty())//.........................................................................If the deque is empty, cannot peek
                         System.out.println("The deque is empty. There is nothing to peek.");
                     else
                         System.out.println("The Item Sku is: " + theDeQueue.peekRear().getSku() + "\nThe Price is: $" + theDeQueue.peekRear().getItemPrice());//.............Displays peek Rear
-
                     break;
                 case 7:
                     System.out.println("Your Dequeue Elements: " + theDeQueue.toString());//...........................If Display Queue
-
                     break;
                 case 8://write something along the lines of YOu clicked Exit have a good one
                     break;
-                    */
+     */
                 default:
                     System.out.println("You Failed to pick the right option");//.......................................If User Chooses a number out of bounds
             }
@@ -70,22 +71,19 @@ public class HashTableApp {
         while (menu != 5);
     }
 
-//}
- public static void displayTable(HashTable theHashing)//Hashing Table
+    //}
+    public static void displayTable(HashTable theHashing)//Hashing Table
     {
         System.out.print("Table:");
         for(int j=0; j<theHashing.getArraySize(); j++)
         {
-            if(theHashing.getHashArray(j) != null)
+            if(!theHashing.isItNull(j) && theHashing.getHashArray(j) != -1)
             {
-              if(theHashing.getHashArray(j).getKey().compareTo("-1")==1) {
-                  System.out.print(theHashing.getHashArray(j).getKey() + " ");
-              }
-              else
-                  System.out.print("**");
+                System.out.print(theHashing.getHashArray(j) + " ");
             }
             else
-                System.out.print("**");
+                System.out.print(" ** ");
+
         }
 
         System.out.println("");
